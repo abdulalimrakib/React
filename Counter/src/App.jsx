@@ -1,18 +1,28 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  let [count, setCount] = useState(0);
+
+  function addCount() {
+    setCount(count + 1);
+  }
+
+  function removeCount() {
+    if (count <=0 ) {
+      setCount(0);
+      return;
+    }
+    setCount(count - 1);
+  }
 
   return (
     <>
       <h1>COUNTER IN REACT</h1>
-      <h3>count: 0</h3>
+      <h3>count: {count}</h3>
 
-      <button>add count</button>
-      <button>remove count</button>
+      <button onClick={addCount}>add count</button>
+      <button onClick={removeCount}>remove count</button>
     </>
   );
 }
