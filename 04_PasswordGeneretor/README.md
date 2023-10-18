@@ -5,7 +5,7 @@ react:
 --> useEffect
 
 html:
---> <input value={} onChange={} defaultChecked ={} min={} max={} type="range">
+--> input value={} onChange={} defaultChecked ={} min={} max={} type="range"/>
 
 CSS:
 --> max-w-lg
