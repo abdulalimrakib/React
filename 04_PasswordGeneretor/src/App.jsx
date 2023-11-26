@@ -62,6 +62,7 @@ function App() {
             onChange={() => {
               setNumber((prev) => !prev);
             }}
+            className="hover:cursor-pointer"
           />
           <label className="text-[18px] font-medium pl-2">number</label>
         </div>
@@ -72,6 +73,7 @@ function App() {
             onChange={() => {
               setCharacters((prev) => !prev);
             }}
+            className="hover:cursor-pointer"
           />
           <label className="text-[18px] font-medium pl-2">characters</label>
         </div>
