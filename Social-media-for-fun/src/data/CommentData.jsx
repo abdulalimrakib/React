@@ -4,8 +4,8 @@ import { useState } from "react"
 
 
 function CommentData(url) {
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [isLoadingCom, setIsLoadingCom] = useState(true)
+    const [errorCom, setErrorCom] = useState(null)
     const [comments, setComments] = useState("")
 
     useEffect(() => {
@@ -18,16 +18,16 @@ function CommentData(url) {
             })
             .then(data => {
                 setComments(data)
-                setIsLoading(false)
+                setIsLoadingCom(false)
             })
             .catch(e => {
-                setError(e.message)
-                setIsLoading(false)
+                setErrorCom(e.message)
+                setIsLoadingCom(false)
             })
     }, [url])
 
 
-    return {isLoading, error, comments}
+    return {isLoadingCom, errorCom, comments}
 }
 
 export default CommentData
