@@ -23,13 +23,15 @@ function SinglePost() {
     }
   }, [title, allPosts])
   useEffect(() => {
-    const filterResult = allComments && allComments.filter(com => com.postId === targetPost.id)
+    if(targetPost && allComments){
+      const filterResult = allComments.filter(com => com.postId === targetPost.id)
     if (filterResult.length > 0) {
       setComments(filterResult)
     } else {
       setComments(null)
     }
-  }, [allComments])
+    }
+  }, [targetPost, allComments])
 
   useEffect(() => {
     if (isClicked) {
@@ -42,7 +44,7 @@ function SinglePost() {
 
 
   if (targetPost === null || comments === null) {
-    return <div>Loading or Post Not Found</div>;
+    return <div className="text-3xl font-bold">Loading ...</div>;
   }
 
   return (
@@ -55,10 +57,10 @@ function SinglePost() {
       <div className="flex gap-10 py-3">
         <button onClick={() => setIsClicked(!isClicked)}><GrLike className="text-[20px]" style={{ color: `${color}` }} /></button>
       </div>
-      <div>
-        <h1>Comments: </h1>
+      <div className="p-10">
+        <h1 className="text-xl font-bold py-5">Comments: </h1>
         {
-          comments && comments.map(comment => <div key={comment.id}><h2>{comment.name}</h2><p>{comment.body}</p></div>)
+          comments && comments.map(comment => <div key={comment.id} className="py-3"><h2 className="text-xl font-medium py-1">Name: {comment.name}</h2><p className="px-5 font-serif">Comment: {comment.body}</p></div>)
         }
       </div>
     </div>

@@ -5,7 +5,6 @@ import Posts from './components/Posts';
 import { UserContext } from './context/UserContext';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SinglePost from './pages/SinglePost';
-import Comments from './components/comments';
 import CommentData from './data/CommentData';
 
 function App() {
@@ -36,7 +35,6 @@ function App() {
         <Routes>
           <Route path='/' element={<Posts></Posts>}></Route>
           <Route path='/:title' element={<SinglePost></SinglePost>}></Route>
-          <Route path='/title/:id' element={<Comments></Comments>}></Route>
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
