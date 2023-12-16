@@ -19,6 +19,12 @@ export const fetchBooks = createAsyncThunk("books/fetchBooks", async () => {
 const bookSlice = createSlice({
   name: "books",
   initialState,
+  reducers: {
+    deleteData: (state, action) => {
+      const id = action.payload;
+      state.books = state.books.filter((book) => book.id !== id);
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.pending, (state) => {
       state.isLoading = true;
@@ -33,5 +39,7 @@ const bookSlice = createSlice({
     });
   },
 });
+
+export const { deleteData } = bookSlice.actions;
 
 export default bookSlice.reducer;
