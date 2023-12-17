@@ -24,6 +24,19 @@ const bookSlice = createSlice({
       const id = action.payload;
       state.books = state.books.filter((book) => book.id !== id);
     },
+    editData: (state, action) => {
+      const { id, bookTitle, author, bookPublisher, date } = action.payload;
+
+      const isBookExist = state.books.filter((book) => book.id === id);
+      console.log(isBookExist);
+      if (isBookExist) {
+        // console.log(id, bookTitle, author, bookPublisher, date);
+        // state.books.volumeInfo.title = bookTitle;
+        // state.books.volumeInfo.authors = author;
+        // state.books.volumeInfo.publisher = bookPublisher;
+        // state.books.volumeInfo.publishedDate = date;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.pending, (state) => {
@@ -40,6 +53,6 @@ const bookSlice = createSlice({
   },
 });
 
-export const { deleteData } = bookSlice.actions;
+export const { deleteData, editData } = bookSlice.actions;
 
 export default bookSlice.reducer;

@@ -4,6 +4,7 @@ import Home from "../pages/Home"
 import Error from './../pages/Error';
 import AddBook from "../pages/AddBook";
 import ShowBooks from './../pages/ShowBooks';
+import Edit from "../pages/Edit";
 
 function Index() {
     return (
@@ -13,6 +14,7 @@ function Index() {
                 <Route path="/" element={<Home />} />
                 <Route path="/add-book" element={<AddBook />} />
                 <Route path="/show-books" element={<ShowBooks />} />
+                <Route path="/edit-book" element={<Edit />} />
                 <Route path="*" element={<Error />} />
             </Routes>
         </BrowserRouter>

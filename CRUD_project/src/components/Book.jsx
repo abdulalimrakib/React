@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteData } from "../redux/bookSlice";
+import { Link } from "react-router-dom";
 
 
 function Book({ book }) {
+    const {id} = book
     const { title, authors, publisher, publishedDate } = book.volumeInfo
     const dispatch = useDispatch()
 
@@ -36,7 +38,7 @@ function Book({ book }) {
             </td>
             <td className="border px-5">
                 <div className="flex justify-between">
-                    <button className="px-4 font-bold text-black bg-yellow-300 rounded-2xl py-1 shadow-2xl hover:scale-105 duration-200">Edit</button>
+                    <Link to="/edit-book" state={{id, title, authors, publisher, publishedDate }}><button className="px-4 font-bold text-black bg-yellow-300 rounded-2xl py-1 shadow-2xl hover:scale-105 duration-200">Edit</button></Link>
                     <button className="px-4 font-bold text-white bg-red-600 rounded-2xl py-1 shadow-2xl hover:scale-105 duration-200" onClick={() => { deleteHandle(book.id) }}>Delete</button>
                 </div>
             </td>
