@@ -24,17 +24,20 @@ const bookSlice = createSlice({
       const id = action.payload;
       state.books = state.books.filter((book) => book.id !== id);
     },
+    addData: (state, action) => {
+      const book = action.payload;
+      state.books.push(book);
+    },
     editData: (state, action) => {
       const { id, bookTitle, author, bookPublisher, date } = action.payload;
 
-      const isBookExist = state.books.filter((book) => book.id === id);
+      const isBookExist = state.books.findIndex((book) => book.id === id);
       console.log(isBookExist);
-      if (isBookExist) {
-        // console.log(id, bookTitle, author, bookPublisher, date);
-        // state.books.volumeInfo.title = bookTitle;
-        // state.books.volumeInfo.authors = author;
-        // state.books.volumeInfo.publisher = bookPublisher;
-        // state.books.volumeInfo.publishedDate = date;
+      if (isBookExist !== -1) {
+        state.books[isBookExist].volumeInfo.title = bookTitle;
+        state.books[isBookExist].volumeInfo.authors = author;
+        state.books[isBookExist].volumeInfo.publisher = bookPublisher;
+        state.books[isBookExist].volumeInfo.publishedDate = date;
       }
     },
   },
@@ -53,6 +56,6 @@ const bookSlice = createSlice({
   },
 });
 
-export const { deleteData, editData } = bookSlice.actions;
+export const { deleteData, editData, addData } = bookSlice.actions;
 
 export default bookSlice.reducer;
