@@ -3,7 +3,7 @@ import { themeContext } from "./hooks/context"
 import Index from "./routes/Index"
 
 function App() {
-  const [theme, setTheme] = useState("")
+  const [theme, setTheme] = useState("#FFFFFF")
 
   useEffect(() => {
     document.querySelector('html').classList.remove("bg-[]", "bg-[#FFFFFF]", "bg-[#000000]", "bg-[#1D4ED8]", "text-white", "text-black");
